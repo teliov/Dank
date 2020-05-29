@@ -483,11 +483,14 @@ public class SubmissionPageLayout extends ExpandablePageLayout implements Expand
               // In that case, trigger another request with the correct sort. Doing this because we need to store
               // and retain this request in case the Activity gets recreated.
               DankSubmissionRequest updatedRequest = pair.first();
+              SubmissionAndComments submissionAndComments = pair.second();
               if (!updatedRequest.equals(submissionRequest)) {
                 //Timber.i("Triggering another request");
                 //noinspection ConstantConditions
                 submissionRequestStream.accept(updatedRequest);
                 return Observable.never();
+              } else if (submissionAndComments.getSubmission().isNsfw()) {
+                return Observable.empty();
               } else {
                 //noinspection ConstantConditions
                 return Observable.just(pair.second());

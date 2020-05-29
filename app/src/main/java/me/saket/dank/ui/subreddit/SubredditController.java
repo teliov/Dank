@@ -122,6 +122,7 @@ public class SubredditController implements ObservableTransformer<UiEvent, UiCha
 
     Observable<UiChange<SubredditUi>> populations = events
         .ofType(SubredditSubmissionClickEvent.class)
+        .filter(e -> !e.submission().isNsfw())
         .withLatestFrom(subredditNameChanges, Pair::create)
         .map(pair -> {
           SubredditSubmissionClickEvent clickEvent = pair.first();
@@ -141,6 +142,7 @@ public class SubredditController implements ObservableTransformer<UiEvent, UiCha
 
     Observable<UiChange<SubredditUi>> expansions = events
         .ofType(SubredditSubmissionClickEvent.class)
+        .filter(e -> !e.submission().isNsfw())
         // This delay ensures that they submission is almost
         // ready to be shown and will not stutter while expanding.
         .delay(100, TimeUnit.MILLISECONDS, mainThread())

@@ -665,7 +665,9 @@ public class SubredditActivity extends DankPullCollapsibleActivity
 
   @Override
   public void populateSubmission(Submission submission, DankSubmissionRequest submissionRequest, String currentSubredditName) {
-    submissionPage.populateUi(Optional.of(submission), submissionRequest, Optional.of(currentSubredditName));
+    if (!submission.isNsfw()) {
+      submissionPage.populateUi(Optional.of(submission), submissionRequest, Optional.of(currentSubredditName));
+    }
   }
 
   @Override

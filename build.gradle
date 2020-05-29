@@ -49,7 +49,7 @@ allprojects {
 
 tasks.wrapper {
   distributionType = DistributionType.ALL
-  distributionSha256Sum = "d08f7e24d061910382c2fda9915e6ed42dd1480ae2e99211f92c70190cb697e0"
+  //distributionSha256Sum = "d08f7e24d061910382c2fda9915e6ed42dd1480ae2e99211f92c70190cb697e0"
 }
 
 task clean(type: Delete) {

@@ -32,7 +32,8 @@ public class FiltersPreferencesConstructor implements UserPreferencesConstructor
             ? c.getString(R.string.userprefs_show_nsfw_content_summary_on)
             : c.getString(R.string.userprefs_show_nsfw_content_summary_off),
         showNsfwContentPref.get(),
-        showNsfwContentPref
+        showNsfwContentPref,
+        false
     ));
     return uiModels;
   }
