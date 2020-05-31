@@ -93,6 +93,10 @@ class SubmissionSwipeActionsProvider @Inject constructor(
       return
     }
 
+    if (submission.isNsfw()) {
+      return;
+    }
+
     val isUndoAction: Boolean
 
     when (swipeAction.labelRes()) {
